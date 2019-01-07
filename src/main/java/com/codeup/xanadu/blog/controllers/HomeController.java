@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-    @GetMapping("/")
-    @ResponseBody
-    public String hello() {
-        return "Howdy";
+
+    @GetMapping("/") // the piece of URL we're listening for
+    @ResponseBody // only necessary if you're returning a string/number
+    public String home() {
+        return "Welcome home! This is the landing page";
     }
+
 }
