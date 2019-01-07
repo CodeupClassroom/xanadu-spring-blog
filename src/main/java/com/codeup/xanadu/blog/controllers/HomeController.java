@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @GetMapping("/") // the piece of URL we're listening for
-    @ResponseBody // only necessary if you're returning a string/number
     public String home() {
-        return "Welcome home! This is the landing page";
+        return "home";
     }
 
 }
