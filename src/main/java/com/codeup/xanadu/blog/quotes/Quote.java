@@ -24,7 +24,8 @@ public class Quote {
             new Quote("anonymous", "To go fast, you must first go slow."),
             new Quote("Yogi Berra", "When you come to a fork in the road, take it!"),
             new Quote("Julia Evans", "I think that making things easy is sort-of like a way to \"invent\" a new feature for people!"),
-            new Quote("Margaret Hamilton", "There was no choice but to be pioneers; no time to be beginners.")
+            new Quote("Margaret Hamilton", "There was no choice but to be pioneers; no time to be beginners."),
+            new Quote("anonymous", "Momentum begets momentum!")
         };
 
         int randomIndex = (int) Math.floor(Math.random() * quotes.length);
