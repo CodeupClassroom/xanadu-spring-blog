@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<nav th:fragment="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/quotes">Quotes</a></li>
+        <li><a href="/quotes/random">Random Quote</a></li>
+        <li><a href="/hello">Hello</a></li>
+    </ul>
+</nav>
+
+<div th:fragment="scripts">
+    <script>jquery link</script>
+    <script>bootstrap js</script>
+    <script>moment JS link</script>
+</div>
+</body>
+</html>
