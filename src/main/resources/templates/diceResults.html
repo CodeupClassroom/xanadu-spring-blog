@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+<h3>The roll was: <span th:text="${pips}">7</span></h3>
+<h3>You guessed: <span th:text="${guess}">7</span></h3>
+<h3><span th:if="${pips == guess}">You got it right!</span></h3>
+<h3><span th:if="${pips != guess}">Try again!</span></h3>
+
+</body>
+</html>
