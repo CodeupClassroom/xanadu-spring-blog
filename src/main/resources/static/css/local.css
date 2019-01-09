@@ -1,0 +1,22 @@
+body {
+    background: ivory;
+}
+
+.footer {
+    background:black;
+    color:greenyellow;
+}
+
+
+ .home {
+     background-color: tomato;
+     color: white;
+ }
+.quote {
+    border: 1px solid yellow;
+}
+
+.hello > h1 {
+    background-color: bisque;
+    color: dodgerblue;
+}
