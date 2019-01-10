@@ -20,14 +20,23 @@ public class PostService {
         return posts;
     }
 
+    public Post findOne(int id) {
+        return posts.get(id - 1);
+    }
+
     public Post create(Post post) {
         post.setId(posts.size() + 1);
         posts.add(post);
         return post;
     }
 
-    public Post findOne(int id) {
-        return posts.get(id - 1);
+    public Post edit(Post post) {
+        post.setId(post.getId()-1);
+        posts.set(post.getId(),post);
+//        Post pp = posts.get(post.getId() - 1);
+//        pp.setTitle(post.getTitle());
+//        pp.setBody(post.getBody());
+        return post;
     }
 
     private void createPosts() {

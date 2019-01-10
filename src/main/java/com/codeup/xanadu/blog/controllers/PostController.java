@@ -4,11 +4,7 @@ import com.codeup.xanadu.blog.models.Post;
 import com.codeup.xanadu.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -28,7 +24,7 @@ public class PostController {
 
 
     @GetMapping("/posts/{id}")
-    public String show(@PathVariable int id, Model model) {
+    public String showPost(@PathVariable int id, Model model) {
         model.addAttribute("post",postService.findOne(id));
         model.addAttribute("id", id);
         return "posts/show";
@@ -36,14 +32,26 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String create() {
-        return "View the form for creating a post";
+    public String showCreateForm(Model model) {
+        model.addAttribute("post",new Post());
+        return "posts/create";
     }
 
-    @PostMapping("/posts")
-    @ResponseBody
-    public String save() {
-        return "Handle the POST request for saving a new blog post";
+    @PostMapping("/posts/create")
+    public String saveNewPost(@ModelAttribute Post post) {
+        postService.create(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(@PathVariable int id, Model model) {
+        model.addAttribute("post",postService.findOne(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@ModelAttribute Post post) {
+        postService.edit(post);
+        return "redirect:/posts/"+post.getId();
     }
 }
