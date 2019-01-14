@@ -1,9 +1,20 @@
 package com.codeup.xanadu.blog.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts")
 public class Post {
-    private String title;
-    private String body;
+
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false, length = 10000)
+    private String body;
 
     public Post() {}
 
