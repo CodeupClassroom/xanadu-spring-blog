@@ -1,6 +1,7 @@
 package com.codeup.xanadu.blog.controllers;
 
 import com.codeup.xanadu.blog.models.Post;
+import com.codeup.xanadu.blog.models.UserRepository;
 import com.codeup.xanadu.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private PostService postService;
+    private UserRepository userRepo;
 
-    public PostController(PostService ps) {
+    public PostController(PostService ps, UserRepository userRepo) {
         this.postService = ps;
+        this.userRepo = userRepo;
     }
 
     @GetMapping("/posts")
@@ -27,6 +30,7 @@ public class PostController {
     public String showPost(@PathVariable int id, Model model) {
         model.addAttribute("post",postService.findOne(id));
         model.addAttribute("id", id);
+        model.addAttribute("user", postService.findOne(id).getUser() );
         return "posts/show";
 
     }
@@ -39,6 +43,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String saveNewPost(@ModelAttribute Post post) {
+        int randomUser = (int) Math.floor(Math.random() * userRepo.count() + 1);
+        post.setUser(userRepo.findOne(randomUser));
         postService.create(post);
         return "redirect:/posts";
     }
